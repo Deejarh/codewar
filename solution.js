@@ -201,14 +201,47 @@ function high(x) {
         console.log(str)
         for (let char of str) {
             score += AlphabetObj.get(char)
+
         }
         result[str] = score
         score = 0
     })
-    const maxWord = Object.keys(result).reduce((a,b) => result[a] >= result[b] ? a : b)
+    const maxWord = Object.keys(result).reduce((a, b) => result[a] >= result[b] ? a : b)
 
     return maxWord
 
 }
 
 console.log(high('b aa'))
+
+function humanReadable(seconds) {
+    if (seconds < 0) return 'seconds must be a postive value'
+    let HH = parseInt(seconds / 3600);
+    let minutes = parseFloat(seconds % 3600)
+    let MM = parseInt(minutes / 60)
+    let SS = parseInt(minutes % 60)
+
+    return `${HH < 10 ? `0${HH}` : HH}:${MM < 10 ? `0${MM}` : MM}:${SS < 10 ? `0${SS}` : SS}`;
+}
+
+console.log(humanReadable(359999))
+
+
+function alphabetPosition(text) {
+    const AlphabetObj = new Map([
+        ['a', 1], ['b', 2], ['c', 3], ['d', 4], ['e', 5], ['f', 6], ['g', 7], ['h', 8],
+        ['i', 9], ['j', 10], ['k', 11], ['l', 12], ['m', 13], ['n', 14], ['o', 15],['p', 16],
+        ['q', 17], ['r', 18], ['s', 19], ['t', 20], ['u', 21], ['v', 22], ['w', 23],['x', 24],
+        ['y', 25], ['z', 26]
+    ])
+    let textArr = text.replace(/\s+/g, '').toLowerCase().split('')
+    console.log(textArr)
+    let result = textArr.map((char) => char = AlphabetObj.get(char) ? AlphabetObj.get(char) : '')
+
+    result = result.filter((val) => val != '')
+
+
+    return result.join(' ');
+}
+
+console.log(alphabetPosition("The sunset sets at twelve o' clock."))
