@@ -230,8 +230,8 @@ console.log(humanReadable(359999))
 function alphabetPosition(text) {
     const AlphabetObj = new Map([
         ['a', 1], ['b', 2], ['c', 3], ['d', 4], ['e', 5], ['f', 6], ['g', 7], ['h', 8],
-        ['i', 9], ['j', 10], ['k', 11], ['l', 12], ['m', 13], ['n', 14], ['o', 15],['p', 16],
-        ['q', 17], ['r', 18], ['s', 19], ['t', 20], ['u', 21], ['v', 22], ['w', 23],['x', 24],
+        ['i', 9], ['j', 10], ['k', 11], ['l', 12], ['m', 13], ['n', 14], ['o', 15], ['p', 16],
+        ['q', 17], ['r', 18], ['s', 19], ['t', 20], ['u', 21], ['v', 22], ['w', 23], ['x', 24],
         ['y', 25], ['z', 26]
     ])
     let textArr = text.replace(/\s+/g, '').toLowerCase().split('')
@@ -245,3 +245,30 @@ function alphabetPosition(text) {
 }
 
 console.log(alphabetPosition("The sunset sets at twelve o' clock."))
+
+function findOdd(A) {
+    //happy coding!
+    let result;
+    //loop through the array and create a new array that saves unique value and number of times it occurs
+    let countMap = new Map()
+    A.forEach((val) => {
+
+        if (countMap.has(val)) {
+            countMap.set(val, countMap.get(val) + 1)
+        } else {
+            countMap.set(val, 1)
+        }
+    })
+
+    for (let [key, count] of countMap)
+
+        if (count % 2 !== 0) {
+            return key
+        }
+    //const findOdd = (xs) => xs.reduce((a, b) => a ^ b)
+
+    //return the value that has odd count
+    return 0;
+}
+
+
