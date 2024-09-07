@@ -235,7 +235,6 @@ function alphabetPosition(text) {
         ['y', 25], ['z', 26]
     ])
     let textArr = text.replace(/\s+/g, '').toLowerCase().split('')
-    console.log(textArr)
     let result = textArr.map((char) => char = AlphabetObj.get(char) ? AlphabetObj.get(char) : '')
 
     result = result.filter((val) => val != '')
@@ -271,4 +270,44 @@ function findOdd(A) {
     return 0;
 }
 
+function findEvenIndex(arr) {
+    //Code goes here!
 
+    //sum array
+    // loop through array and sum, then check if (leftsum = totalsum-leftsum-arr[i])
+    // return the index that meet the check
+
+    const totalSum = arr.reduce((prev, curr) => prev + curr, 0)
+    let leftSum = 0
+    for (let i = 0; i < arr.length; i++) {
+
+        if (leftSum == totalSum - leftSum - arr[i]) {
+            return i
+        }
+        leftSum += arr[i]
+    }
+    return -1
+
+}
+
+(findEvenIndex([1, 2, 3, 4, 3, 2, 1]))
+
+
+
+function incrementString (strng) {
+    // return incrementedString
+     let reg = /\d*$/
+      let numStrng = strng.match(reg)[0]
+      if (numStrng) {
+          const padLength = numStrng.length
+          let num = parseInt(numStrng) + 1
+          let numRes = num.toString().padStart(padLength, 0)
+          return strng.slice(0, -padLength) + numRes
+  
+  
+      }
+      return `${strng}1`
+  }
+
+ console.log(incrementString('foo0042'))
+console.log(incrementString('fo97obar79'))
