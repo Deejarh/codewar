@@ -311,3 +311,73 @@ function incrementString (strng) {
 
  console.log(incrementString('foo0042'))
 console.log(incrementString('fo97obar79'))
+
+
+// Create a function that takes a positive integer and returns the next bigger number that can be formed by rearranging its digits. For example:
+  //12 ==> 21
+ // 513 ==> 531
+ //2017 ==> 2071
+ //If the digits can't be rearranged to form a bigger number, return -1 
+function nextBigger(n){
+    //your code here
+    //check if numbers are equal return -1
+    //slice the last digit if its not equal
+    //revers the arr,
+  }
+
+
+
+  function nextBigger(n) {
+    // Convert number to an array of digits
+    let digits = n.toString().split('');
+  
+    // Step 1: Find the rightmost pair where the first digit is less than the next
+    for (let i = digits.length - 2; i >= 0; i--) {
+      if (digits[i] < digits[i + 1]) {
+        // Step 2: Find the smallest digit to the right of digits[i] that's larger than digits[i]
+        for (let j = digits.length - 1; j > i; j--) {
+          if (digits[j] > digits[i]) {
+            // Step 3: Swap digits[i] and digits[j]
+            [digits[i], digits[j]] = [digits[j], digits[i]];
+  
+            // Step 4: Sort the remaining digits after i to get the smallest possible number
+            let leftPart = digits.slice(0, i + 1);
+            let rightPart = digits.slice(i + 1).sort();
+  
+            // Combine and return the result as a number
+            return parseInt(leftPart.concat(rightPart).join(''), 10);
+          }
+        }
+      }
+    }
+  
+    // If no bigger number can be formed, return -1
+    return -1;
+  }
+  //console.log(nextBigger(144))
+ 
+
+
+  function solution(list){
+   //loop through each item
+   let result = [];
+   let i = 0
+   while (i < list.length) {
+       let start = i
+       while ( i < list.length-1 && (list[i + 1] === list[i]+1)) {
+           i++
+       }
+       if (i - start >= 2){
+           result.push(`${list[start]}-${list[i]}`)
+       } else {
+           for (j = start; j <=i; j++){
+               result.push(`${list[j]}`)
+           }
+       }
+       i++
+   }
+   console.log(result)
+   return result.join(',')
+   }
+
+   console.log(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]))
