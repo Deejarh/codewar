@@ -7,18 +7,7 @@
 
 
 
-function findShort(s) {
-    console.log(s)
-    s = s.split(' ')
-    let res = s.map((val, i) => val.length)
-    let min = Math.min(...res)
-    console.log(s)
-    console.log(res)
-    return min
 
-}
-
-console.log(findShort("bitcoin take over the world maybe who knows perhaps"))
 
 function arrayDiff(a, b) {
 
