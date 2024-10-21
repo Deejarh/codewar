@@ -60,3 +60,36 @@ const sessions = [
   }
 
   console.log(selectData(sessions,  { equipment: ['bike', 'kettlebell'] } ))
+
+
+
+
+
+  function getElementsByStyle(property, value) {
+    const results = [];
+    const rootNode = document.body;  // Adjust as needed (e.g., document or specific element)
+  
+    function traverse(node) {
+      if (!node || node.nodeType !== Node.ELEMENT_NODE) return;
+  
+      const computedStyle = window.getComputedStyle(node);
+      if (computedStyle.getPropertyValue(property) === value) {
+        results.push(node);
+      }
+  
+      // Recursively search child nodes
+      for (const child of node.children) {
+        traverse(child);
+      }
+    }
+  
+    traverse(rootNode);
+  
+    return results;
+  }
+  
+  // Example usage
+  const elements = getElementsByStyle("color", "red");
+  
+  // Do something with the found elements
+  console.log(elements); // Array of elements with the color "red"
