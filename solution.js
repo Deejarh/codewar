@@ -3,14 +3,7 @@
 
 
 
-function validatePIN(pin) {
-    console.log(pin.length)
-    const validatePin = /^\d{4}$|^\d{6}$/
-    console.log(validatePin.test(pin))
-    return validatePin.test(pin)
-}
 
-console.log(validatePIN('1234'))
 
 function accum(str) {
     let res = `${str.charAt(0).toUpperCase()}`;
